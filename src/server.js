@@ -26,8 +26,12 @@ export default class App {
 
         this.app = Express();
 
+        this.app.route('*').get((req, res ) => {
+            return res.json('Hello, worlds');
+        });
+
         this.app.listen(PORT, () => {
-            if (MODE !== 'test') console.log(`Server is running on ${MODE}`);
+            if (MODE !== 'test') console.log(`Server is running on ${PORT}, in ${MODE}`);
         });
 
         return this.app;
