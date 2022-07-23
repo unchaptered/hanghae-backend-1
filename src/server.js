@@ -28,6 +28,9 @@ export default class App {
 
         this.app = Express();
 
+        this.app.use(Express.json());
+        this.app.use(Express.urlencoded({ extended: true }));
+
         this.app.use('/', indexRouter);
         this.app.use('/post', postRouter);
         this.app.use('/comment', commentRouter);
