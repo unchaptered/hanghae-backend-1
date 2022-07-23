@@ -1,13 +1,13 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
-const postSchema = new Schema({
-    title: { type: String },
-    context: { type: String },
+const postSchema = new mongoose.Schema({
+    title: { type: String, minLength: 3, maxLength: 30, required: true },
+    context: { type: String, minLEngth: 3, maxLegnth: 300, required: true },
     
-    owner: { type: String },
-    passowrd: { type: String },
+    owner: { type: String, required: true },
+    password: { type: String, required: true },
     comments: [
-        { type: ObjectId, ref: 'Comment' }
+        { type: mongoose.Types.ObjectId, ref: 'Comment' }
     ]
 }, {
     timestamps: {
@@ -15,6 +15,6 @@ const postSchema = new Schema({
     }
 })
 
-const postModel = model('Post', postSchema);
+const postModel = mongoose.model('Post', postSchema);
 
 export default postModel;

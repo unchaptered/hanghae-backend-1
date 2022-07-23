@@ -1,7 +1,7 @@
-import { Schema, model, ObjectId } from 'mongoose';
+import mongoose from 'mongoose';
 
-const commentSchema = new Schema({
-    post: { type: ObjectId, ref: 'Post' },
+const commentSchema = new mongoose.Schema({
+    post: { type: mongoose.Types.ObjectId, ref: 'Post' },
     context: { type: String },
 }, {
     timestamps: {
@@ -9,6 +9,6 @@ const commentSchema = new Schema({
     }
 })
 
-const commentModel = model('Comment', commentSchema);
+const commentModel = mongoose.model('Comment', commentSchema);
 
 export default commentModel;
