@@ -1,5 +1,6 @@
 import Env from './env.js';
 import App from './server.js';
+import Db from './db.js';
 
 
 (
@@ -10,10 +11,11 @@ import App from './server.js';
      * 
      * Please visit : https://github.com/Boiler-Express/.github/blob/main/notes/design/SINGLETON.md
      */
-    () => {
+    async () => {
 
-        const { MODE, PORT } = Env.getEnvInstance();
-        const app = App.getAppInstance(MODE, PORT);
+        const { MODE, PORT, DB_ADDRESS } = Env.getEnvInstance();
+        const result = await Db.setConnection(MODE, DB_ADDRESS);
+        const app = await App.getAppInstance(MODE, PORT);
     
     }
 )()

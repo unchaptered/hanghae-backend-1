@@ -24,7 +24,8 @@ export default class Env {
 
         this.env = {
             MODE: process.env.NODE_ENV,
-            PORT: process.env.PORT
+            PORT: process.env.PORT,
+            DB_ADDRESS: process.env.DB_ADDRESS
         };
 
         return this.env;
