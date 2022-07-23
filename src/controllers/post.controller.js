@@ -21,9 +21,50 @@ export async function createPost(req, res) {
     } else return res.status(400).json('hello');
 }
 
-export function getPostById(req, res) {
+export async function getPostById(req, res) {
+
+    const { id } = req.params;
+
+    return res.status(200).json(await postModel.findById(id).select('title context owner'));
+
 }
-export function putPostById(req, res) {
+export async function putPostById(req, res) {
+
+    const {
+        params: { id },
+        body: { title, context, owner, password }
+    } = req;
+
+    if (title?.length >=3 && title?.length <= 30
+        && context?.length >= 3 && context?.length <= 300) {
+
+        const isExists = await postModel.exists({ _id: id });
+        if (isExists === null) return res.status(404).json('존재하지 않는 사용자입니다.');
+
+        const result = await postModel.findOneAndUpdate({ $and: [{ _id: id }, { owner }, { password }]}, { title, context }).select('title context owner password');
+        if (result === null) return res.status(403).json('소유주가 아닌 사용자입니다.');
+
+        return res.status(201).json('수정에 성공하셨습니다.');
+
+    } else return res.status(400).json('파라미터 누락');
 }
-export function deletePostById(req, res) {
+export async function deletePostById(req, res) {
+
+    const {
+        params: { id },
+        body: { owner, password }
+    } = req;
+    
+    if (owner.length >= 1 && password.length >= 1) {
+
+        const isExists = await postModel.exists({ _id: id });
+        if (isExists === null) return res.status(404).json('존재하지 않는 사용자입니다.');
+    
+        const result = await postModel.findOneAndDelete({ $and: [{ _id: id }, { owner }, { password }]});
+        if (result === null) return res.status(403).json('소유주가 아닌 사용자입니다.');
+    
+        return res.status(201).json('삭제에 성공하였습니다.');
+
+    } else return res.status(200).json('파라미터 누락');
+
 }
