@@ -6,7 +6,7 @@ import {
 
 const postRouter = Router();
 
-postRouter.route('/')
+postRouter.route('')
     .get(getPostsByQuery)
     .post(createPost);
 
