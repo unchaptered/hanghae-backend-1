@@ -1,46 +1,6 @@
-# Welcome 🎉 Base-Express
+# 주특기 기본 주차 🎉 RESTful API 서버
 
-This is `First Step` of [Basic Course](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) to dev Express App.
-
-This Template only contain **Basic Application**.
-
-If you want to more information of Architecture, visit [Architecture.md](https://github.com/Boiler-Express/Base-Express/blob/main/ARCHITECTURE.md)
-
-<img src="./ARCHITECTURE.png" style="width: 500px;">
-
-
-<hr>
-
-## Get Started, lastest version
-
-```cmd
-git clone https://github.com/Boiler-Express/Base-Express.git
-npx degit Boiler-Express/Base-Express
-```
-
-- `git clone` : copy all files, include all versions.
-- `npx degit` : copy all files, except versions.
-
-<hr>
-
-## Get Start, selected version
-
-```cmd
-<!-- If, you want to clone @1.0.0 / @1.1.0 version -->
-
-git clone -b '@1.0.0' --single-branch --depth 1 https://github.com/Boiler-Express/Base-Express.git
-
-git clone -b '@1.1.0' --single-branch --depth 1 https://github.com/Boiler-Express/Base-Express.git
-```
-
-| Versions  | Description   | Updated Date |
-| :-------: | :-----------  | :----------- |
-| @1.0.0    | This version contains... <br> - Base Strcutrue of Singleton Express | `2022-07-22` |
-| @1.1.0    | This version contains... <br> - Base Structure of Singleton Express <br> - Base Config Settings of Testing, `Jest` | `2022-07-22` |
-| @1.2.0    | This version contains... <br> - Base Structure of Singleton Express <br> - Base Config Settings of Testing, `Jest` <br> - 100% coverage testing code, for eaxmples | `2022-07-22` (latest) |
-
-
-<hr>
+해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
 
 ## Modules
 
