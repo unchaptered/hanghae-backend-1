@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-    post: { type: mongoose.Types.ObjectId, ref: 'Post' },
+    postId: { type: mongoose.Types.ObjectId, ref: 'Post' },
     context: { type: String },
 }, {
     timestamps: {
