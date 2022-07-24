@@ -6,27 +6,27 @@ labels: 'bug'
 assignees: [ 'unchaptered' ]
 ---
 
-## Behavior
+## 상황
 
-1. Expected behavior
-2. Actual behavior
-3. Describe the bug
+1. 기대 상황
+2. 실제 상황
+3. 버그 예상 및 설명
 
-### 1. Expected behaviors
+### 1. 기대 상황
 
-### 2. Actual behavior
+### 2. 실제 상황
 
-### 3. Describe the bug
+### 3. 버그 예상 및 설명
 
-## Details
+## 디테일
 
-### 1. Environment
+### 1. 개발 환경
 
 ```cmd
 - Node : v16.15.1
 - npm : v8.11.0
 ```
 
-### 2. Screenshots
+### 2. 스크린샷
 
 If you have some iamges of error, please submit it.

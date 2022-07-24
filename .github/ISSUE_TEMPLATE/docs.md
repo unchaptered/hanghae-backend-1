@@ -6,10 +6,10 @@ labels: 'documentation'
 assignees: [ 'unchaptered' ]
 ---
 
-## Work Logs
+## 작업 로그
 
-- started_date : **[22-xx-xx]**
-- updated_date : **[22-xx-xx]**
-- finished_date : **[not-yet]** / [22-xx-xx]
+- 시작일 : **[22-xx-xx]**
+- 업데이트일 : **[22-xx-xx]**
+- 작업 완료일 : **[not-yet]** / [22-xx-xx]
 
-## Purpose to update Docs
+## 업데이트 목적
