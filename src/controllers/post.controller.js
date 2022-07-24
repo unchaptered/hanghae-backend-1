@@ -1,16 +1,40 @@
 import { postModel } from '../schemas/_.loader.js';
 
-export function getPostsByQuery(req, res) {
+export async function getPostsByQuery(req, res) {
+
+    const { sort } = req.query;
+
+    const result = await postModel.find({})
+                                .sort({ 'createdAt': sort === 'asc' ? 'asc' : 'desc' })
+                                .select('title owner createdAt');
+    if (result === null)
+        return res.status(201).json({
+            isSuccess: false,
+            message: '게시글이 존재하지 않습니다.',
+            result: {}
+        });
+    else
+        return res.json({
+            isSuccess: true,
+            message: '게시글 불러오기에 성공하였습니다.',
+            result: result.map(v => ({
+                title: v.title,
+                owner: v.owner,
+                createdAt: v.createdAt
+            }))
+        });
+    
 }
 
 export async function createPost(req, res) {
+
     const { title, context, owner, password } = req.body;
 
     if (title.length >=3 && title.length <= 30
         && context.length >= 3 && context.length <= 300
         && owner.length >= 1 && password.length >= 1) {
 
-        const result = await new postModel({ title, context, owner, password}).save();
+        const result = await new postModel({ title, context, owner, password }).save();
         console.log(result);
 
         return res.status(200).json({
@@ -19,6 +43,7 @@ export async function createPost(req, res) {
         });
 
     } else return res.status(400).json('hello');
+
 }
 
 export async function getPostById(req, res) {
@@ -28,6 +53,7 @@ export async function getPostById(req, res) {
     return res.status(200).json(await postModel.findById(id).select('title context owner'));
 
 }
+
 export async function putPostById(req, res) {
 
     const {
@@ -47,7 +73,9 @@ export async function putPostById(req, res) {
         return res.status(201).json('수정에 성공하셨습니다.');
 
     } else return res.status(400).json('파라미터 누락');
+    
 }
+
 export async function deletePostById(req, res) {
 
     const {
