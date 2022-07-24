@@ -7,7 +7,7 @@ import {
 const commentRouter = Router();
 
 
-commentRouter.route('/')
+commentRouter.route('')
     .get(getComment)
     .post(createComment)
 
