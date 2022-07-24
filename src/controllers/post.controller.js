@@ -18,6 +18,7 @@ export async function getPostsByQuery(req, res) {
             isSuccess: true,
             message: '게시글 불러오기에 성공하였습니다.',
             result: result.map(v => ({
+                _id: v._id,
                 title: v.title,
                 owner: v.owner,
                 createdAt: v.createdAt
