@@ -1,5 +1,7 @@
 # 기본 서버 배포
 
+> 마일스톤 : [Prototype : 기본 서버 배포](https://github.com/unchaptered/hanghae-backend-1/milestone/4)
+
 - EC2 인스턴스 생성 및 설정
     - 별도의 보안그룹 설정
         - SSH 22 port Anywhere IPv4
