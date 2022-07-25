@@ -2,6 +2,14 @@
 
 해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
 
+## 작업 현황
+
+| Milestone                                           | Tag    | Relaese |
+| :-------------------------------------------------- | :----- | :------ |
+| [Prototype : 기본 서버 구현](https://github.com/unchaptered/hanghae-backend-1/milestone/1)                       | @1.0.0 | [Base Logic.](https://github.com/unchaptered/hanghae-backend-1/releases/tag/%401.0.0) |
+| [Rafactor : 계층화되고 유지보수가 쉬운 서버로 개선](https://github.com/unchaptered/hanghae-backend-1/milestone/2)  | - | - |
+| [CI/CD : EC2 배포 자동화 파이프 라인 구축](https://github.com/unchaptered/hanghae-backend-1/milestone/3)          | - | - |
+
 ## Modules
 
 ```json
