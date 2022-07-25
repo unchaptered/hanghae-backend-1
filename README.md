@@ -2,6 +2,8 @@
 
 해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
 
+서버 IPv4 : 52.78.9.253
+
 ## 작업 현황
 
 | Milestone                                           | Tag    | Relaese |
