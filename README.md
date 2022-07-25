@@ -7,10 +7,10 @@
 | Milestone                                           | Tag    | Relaese |
 | :-------------------------------------------------- | :----- | :------ |
 | [Prototype : 기본 서버 구현](https://github.com/unchaptered/hanghae-backend-1/milestone/1)                       | @1.0.0 | [Base Logic.](https://github.com/unchaptered/hanghae-backend-1/releases/tag/%401.0.0) |
-| [Rafactor : 계층화되고 유지보수가 쉬운 서버로 개선](https://github.com/unchaptered/hanghae-backend-1/milestone/2)  | - | - |
+| [Rafactor : 계층화되고 유지보수가 쉬운 서버로 개선](https://github.com/unchaptered/hanghae-backend-1/milestone/2)  | @1.0.1 | - |
 | [CI/CD : EC2 배포 자동화 파이프 라인 구축](https://github.com/unchaptered/hanghae-backend-1/milestone/3)          | - | - |
 
-## Modules
+## 모듈 리스트
 
 ```json
   "dependencies": {
