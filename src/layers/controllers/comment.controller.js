@@ -1,7 +1,6 @@
-import postModel from '../schemas/post.js';
-import commentModel from '../schemas/comment.js';
+import { errorHandler } from '../../modules/_.lodaer.js';
+import { postModel, commentModel } from '../../models/_.loader.js';
 
-import { errorHandler } from '../handler/error.handler.js';
 
 export async function getComment(req, res) {
 

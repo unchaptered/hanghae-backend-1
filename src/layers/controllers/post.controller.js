@@ -1,4 +1,5 @@
-import { postModel } from '../schemas/_.loader.js';
+import { errorHandler } from '../../modules/_.lodaer.js';
+import { postModel } from '../../models/_.loader.js';
 
 export async function getPostsByQuery(req, res) {
 
