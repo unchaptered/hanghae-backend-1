@@ -1,6 +1,5 @@
 import { errorHandler } from '../../modules/_.lodaer.js';
-import { postModel, commentModel } from '../../models/_.loader.js';
-
+import * as commentService from '../services/comment.service.js';
 
 export async function getComment(req, res) {
 
@@ -17,7 +16,7 @@ export async function getComment(req, res) {
             result: {}
         });
 
-        const result = await commentModel.find({ postId }).sort({ 'createdAt': sort === 'asc' ? 'asc' : 'desc' });
+        const result = await commentService.getComment(postId, sort);
         if (result === null)
             return res.status(404).json({
                 isSuccess: false,
@@ -57,13 +56,7 @@ export async function createComment(req, res) {
             result: {}
         });
 
-        const comment = new commentModel({ postId, context });
-
-        const post = await postModel.findByIdAndUpdate(postId, {
-            $addToSet: { comments: comment._id }
-        }, { new: true });
-
-        await comment.save();
+        const [ post, comment ] = await commentService.createComment(postId, context);
 
         return res.json({
             isSuccess: true,
@@ -104,7 +97,7 @@ export async function putCommentById(req, res) {
             result: {}
         });
 
-        const result = await commentModel.findByIdAndUpdate(id, { context }, { new: true});
+        const result = await commentService.putCommentById(id, context);
 
         return res.status(201).json({
             isSuccess: true,
@@ -132,7 +125,7 @@ export async function deleteCommentById(req, res) {
             result: {}
         });
 
-        const result = await commentModel.findByIdAndDelete(id, { new: true });
+        const result = await commentService.deleteCommentById(id);
         if (result === null)
             return res.status(404).json({
                 isSuccess: false,
