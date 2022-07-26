@@ -1,5 +1,5 @@
 import { createResponse } from 'node-mocks-http';
-import { errorHandler } from '../../src/handler/error.handler';
+import { errorHandler } from '../../src/modules/_.lodaer';
 
 
 describe('Error Handler', () => {
