@@ -1,7 +1,11 @@
-import { errorHandler } from '../../modules/_.lodaer.js';
 import * as postService from '../services/post.service.js';
 
+import { FormFactory } from '../../modules/_.lodaer.js';
+import { BadRequestException } from '../../models/_.loader.js';
+
 export async function getPostsByQuery(req, res) {
+
+    const formFactory = new FormFactory();
 
     try {
 
@@ -9,26 +13,22 @@ export async function getPostsByQuery(req, res) {
 
         const result = await postService.getPostsByQuery(sort);
 
-        return res.json({
-            isSuccess: true,
-            message: '게시글 불러오기에 성공하였습니다.',
-            result: result.map(v => ({
-                _id: v._id,
-                title: v.title,
-                owner: v.owner,
-                createdAt: v.createdAt
-            }))
-        });
+        return res.status(201).json(
+            formFactory.getSuccessForm('게시글 불러오기에 성공하였습니다.', result));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
     
 }
 
 export async function createPost(req, res) {
+
+    const formFactory = new FormFactory();
 
     try {
 
@@ -40,22 +40,16 @@ export async function createPost(req, res) {
     
             const result = await postService.createPost(title, context, owner, password);
     
-            return res.status(200).json({
-                isSuccess: true,
-                message: '게시글 작성이 완료되었습니다.',
-                result
-            });
+            return res.status(201).json(
+                formFactory.getSuccessForm('게시글 작성이 완료되었습니다.', result));
     
-        } else return res.status(400).json({
-            isSuccess: false,
-            message: '잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요',
-            result: {}
-        });
+        } else throw new BadRequestException('잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요');
 
     } catch(err) {
 
-        return errorHandler(res, err);
-
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
     
@@ -64,19 +58,22 @@ export async function createPost(req, res) {
 
 export async function getPostById(req, res) {
 
+    const formFactory = new FormFactory();
+
     try {
 
         const { id } = req.params;
 
         const result = await postService.getPostById(id);
-        return res.status(201).json({
-            isSuccess: false,
-            message: '게시글 수정이 완료되었습니다.',
-        })
+
+        return res.status(201).json(
+            formFactory.getSuccessForm('게시글 수정이 완료되었습니다.', result));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
 
     }
@@ -84,6 +81,8 @@ export async function getPostById(req, res) {
 }
 
 export async function putPostById(req, res) {
+
+    const formFactory = new FormFactory();
 
     try {
 
@@ -97,28 +96,16 @@ export async function putPostById(req, res) {
     
             const result = await postService.putPostById(id, title, context, owner, passowrd);
 
-            if (result === null)
-                return res.status(404).json({
-                    isSuccess: false,
-                    message: '소유주가 아닌 사용자입니다.',
-                    result: {}
-                });
-            else
-                return res.status(201).json({
-                    isSuccess: false,
-                    message: '수정에 성공하셨습니다.',
-                    result: {}
-                });
+            return res.status(201).json(
+                formFactory.getSuccessForm('게시글 수정에 성공하셨습니다.', result));
     
-        } else return res.status(400).json({
-            isSuccess: false,
-            message: '잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요',
-            result: {}
-        });
+        } else throw new BadRequestException('잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요');
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
 
     }
@@ -127,6 +114,8 @@ export async function putPostById(req, res) {
 }
 
 export async function deletePostById(req, res) {
+
+    const formFactory = new FormFactory();
 
     try {
 
@@ -138,23 +127,17 @@ export async function deletePostById(req, res) {
         if (owner.length >= 1 && password.length >= 1) {
     
             const result = await postService.deletePostById(id, owner, passowrd);
-        
-            return res.status(201).json({
-                isSuccess: true,
-                message: '게시글이 삭제되었습니다.',
-                result: result
-            });
+
+            return res.status(201).json(
+                formFactory.getSuccessForm('게시글이 삭제되었습니다.', result));
     
-        } else return res.status(400).json({
-            isSuccess: false,
-            message: '잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요',
-            result: {}
-        });
+        } else throw new BadRequestException('잘못된 요청이 전달되었습니다. 변수의 범위를 고려해서 보내주세요');
         
     } catch(err) {
 
-        return errorHandler(res, err);
-
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
 

@@ -1,10 +1,15 @@
-import { errorHandler } from '../../modules/_.lodaer.js';
 import * as commentService from '../services/comment.service.js';
+
+import { errorHandler, FormFactory } from '../../modules/_.lodaer.js';
+import { exceptionHandler } from '../../modules/handler/exception.handler.js';
+import { CustomException, BadRequestException, UnkownServerError } from '../../models/_.loader.js';
 
 export async function getComment(req, res) {
 
+    const formFactory = new FormFactory();
+
     try {
-        
+
         const {
             body: { postId },
             query: { sort }
@@ -18,21 +23,22 @@ export async function getComment(req, res) {
 
         const result = await commentService.getComment(postId, sort);
 
-        return res.status(201).json({
-            isSuccess: false,
-            message: '댓글 조회가 완료되었습니다.',
-            result: result
-        });
+        return res.status(201).json(
+            formFactory.getSuccessForm('댓글 조회가 완료되었습니다.', result));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
 
 }
 
 export async function createComment(req, res) {
+
+    const formFactory = new FormFactory();
     
     try {
 
@@ -52,25 +58,22 @@ export async function createComment(req, res) {
 
         const [ post, comment ] = await commentService.createComment(postId, context);
 
-        return res.json({
-            isSuccess: true,
-            message: '댓글 작성에 성공하셨습니다.',
-            result: {
-                comment: comment,
-                post: post
-            }
-        });
-            
+        return res.status(201).json(
+            formFactory.getSuccessForm('댓글 작성에 성공하셨습니다.', { post, comment }));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
 
 }
 
 export async function putCommentById(req, res) {
+
+    const formFactory = new FormFactory();
     
     try {
 
@@ -93,23 +96,21 @@ export async function putCommentById(req, res) {
 
         const result = await commentService.putCommentById(id, context);
 
-        return res.status(201).json({
-            isSuccess: true,
-            message: '댓글 수정이 완료되었습니다.',
-            result: {
-                comment: result
-            }
-        });
-            
+        return res.status(201).json(
+            formFactory.getSuccessForm('댓글 수정이 완료되었습니다.', { comment: result }));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
 
 }
 export async function deleteCommentById(req, res) {
+
+    const formFactory = new FormFactory();
     
     try {
 
@@ -122,17 +123,15 @@ export async function deleteCommentById(req, res) {
         });
 
         const result = await commentService.deleteCommentById(id);
-        
-        return res.stataus(201).json({
-            isSuccess: true,
-            message: '댓글 삭제가 완료되었습니다.',
-            result: {}
-        });
-        
+
+        return res.status(201).json(
+            formFactory.getSuccessForm('댓글 삭제가 완료되었습니다.', { comment: result }));
 
     } catch(err) {
 
-        return errorHandler(res, err);
+        const e = exceptionHandler(err);
+        return res.status(e.statusCode).json(
+            formFactory.getFailureForm(e.message, {}));
 
     }
 
