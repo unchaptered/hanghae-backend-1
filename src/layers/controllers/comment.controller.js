@@ -17,12 +17,6 @@ export async function getComment(req, res) {
         });
 
         const result = await commentService.getComment(postId, sort);
-        if (result === null)
-            return res.status(404).json({
-                isSuccess: false,
-                message: '존재하는 댓글이 없습니다.',
-                result: {}
-            });
 
         return res.status(201).json({
             isSuccess: false,
@@ -102,7 +96,9 @@ export async function putCommentById(req, res) {
         return res.status(201).json({
             isSuccess: true,
             message: '댓글 수정이 완료되었습니다.',
-            result: {}
+            result: {
+                comment: result
+            }
         });
             
 
@@ -126,12 +122,6 @@ export async function deleteCommentById(req, res) {
         });
 
         const result = await commentService.deleteCommentById(id);
-        if (result === null)
-            return res.status(404).json({
-                isSuccess: false,
-                message: '존재하지 않는 댓글입니다.',
-                result: {}
-            });
         
         return res.stataus(201).json({
             isSuccess: true,
