@@ -1,5 +1,7 @@
-import commentModel from '../schemas/comment.js';
 import postModel from '../schemas/post.js';
+import commentModel from '../schemas/comment.js';
+
+import { errorHandler } from '../handler/error.handler.js';
 
 export async function getComment(req, res) {
 
@@ -32,11 +34,7 @@ export async function getComment(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
 
     }
 
@@ -80,11 +78,7 @@ export async function createComment(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
 
     }
 
@@ -122,11 +116,7 @@ export async function putCommentById(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
 
     }
 
@@ -160,11 +150,7 @@ export async function deleteCommentById(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
 
     }
 
