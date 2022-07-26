@@ -29,11 +29,7 @@ export async function getPostsByQuery(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
 
     }
     
@@ -65,11 +61,8 @@ export async function createPost(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
+
 
     }
     
@@ -97,11 +90,8 @@ export async function getPostById(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
+
 
     }
 
@@ -149,11 +139,8 @@ export async function putPostById(req, res) {
 
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
+
 
     }
     
@@ -197,11 +184,8 @@ export async function deletePostById(req, res) {
         
     } catch(err) {
 
-        return res.status(500).json({
-            isSuccess: false,
-            message: `${err.name} : ${err.message}`,
-            result: {}
-        });
+        return errorHandler(res, err);
+
 
     }
 
