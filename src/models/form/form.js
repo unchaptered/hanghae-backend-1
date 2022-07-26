@@ -14,7 +14,7 @@ export class Form {
 
 }
 
-export class SuccessForm {
+export class SuccessForm extends Form {
 
     constructor(message, result = {}) {
 
@@ -24,7 +24,7 @@ export class SuccessForm {
 
 }
 
-export class FailureForm {
+export class FailureForm extends Form {
 
     constructor(message, result = {}) {
 
