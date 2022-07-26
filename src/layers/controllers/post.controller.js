@@ -1,5 +1,5 @@
 import { errorHandler } from '../../modules/_.lodaer.js';
-import { postModel } from '../../models/_.loader.js';
+import * as postService from '../services/post.service.js';
 
 export async function getPostsByQuery(req, res) {
 
@@ -7,9 +7,8 @@ export async function getPostsByQuery(req, res) {
 
         const { sort } = req.query;
 
-        const result = await postModel.find({})
-                                    .sort({ 'createdAt': sort === 'asc' ? 'asc' : 'desc' })
-                                    .select('title owner createdAt');
+        const result = await postService.getPostsByQuery(sort);
+
         if (result === null)
             return res.status(404).json({
                 isSuccess: false,
@@ -46,7 +45,7 @@ export async function createPost(req, res) {
             && context.length >= 3 && context.length <= 300
             && owner.length >= 1 && password.length >= 1) {
     
-            const result = await new postModel({ title, context, owner, password }).save();
+            const result = await postService.createPost(title, context, owner, password);
     
             return res.status(200).json({
                 isSuccess: true,
@@ -76,7 +75,8 @@ export async function getPostById(req, res) {
 
         const { id } = req.params;
 
-        const result = await postModel.findById(id).select('title context owner')
+        const result = await postService.getPostById(id);
+
         if (result === null)
             return res.status(201).json({
                 isSuccess: false,
@@ -110,15 +110,16 @@ export async function putPostById(req, res) {
         if (title?.length >=3 && title?.length <= 30
             && context?.length >= 3 && context?.length <= 300) {
     
-            const isExists = await postModel.exists({ _id: id });
-            if (isExists === null)
-                return res.status(404).json({
-                    isSuccess: false,
-                    message: '존재하지 않는 사용자입니다.',
-                    result: {}
-                });
+            // const isExists = await postModel.exists({ _id: id });
+            // if (isExists === null)
+            //     return res.status(404).json({
+            //         isSuccess: false,
+            //         message: '존재하지 않는 사용자입니다.',
+            //         result: {}
+            //     });
     
-            const result = await postModel.findOneAndUpdate({ $and: [{ _id: id }, { owner }, { password }]}, { title, context }).select('title context owner password');
+            const result = await postService.putPostById(id, title, context, owner, passowrd);
+
             if (result === null)
                 return res.status(404).json({
                     isSuccess: false,
@@ -159,15 +160,16 @@ export async function deletePostById(req, res) {
         
         if (owner.length >= 1 && password.length >= 1) {
     
-            const isExists = await postModel.exists({ _id: id });
-            if (isExists === null)
-                return res.status(404).json({
-                    isSuccess: false,
-                    message: '존재하지 않는 사용자입니다.',
-                    result: {}
-                });
+            // const isExists = await postModel.exists({ _id: id });
+            // if (isExists === null)
+            //     return res.status(404).json({
+            //         isSuccess: false,
+            //         message: '존재하지 않는 사용자입니다.',
+            //         result: {}
+            //     });
         
-            const result = await postModel.findOneAndDelete({ $and: [{ _id: id }, { owner }, { password }]});
+            const result = await postService.deletePostById(id, owner, passowrd);
+
             if (result === null)
                 return res.status(404).json({
                     isSuccess: false,
