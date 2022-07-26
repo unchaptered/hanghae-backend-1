@@ -10,7 +10,7 @@ export async function getPostsByQuery(sort) {
 
     const result = await postModel.find({})
         .sort({ 'createdAt': sort === 'asc' ? 'asc' : 'desc' })
-        .select('title owner createdAt');
+        .select('_id title owner createdAt');
 
     if (result === null)
         throw NotFoundException('게시글이 존재하지 않습니다.');

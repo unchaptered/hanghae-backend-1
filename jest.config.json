@@ -1,4 +1,14 @@
 {
-    "verbose": true,
-    "collectCoverage": true
-  }
+  "verbose": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**.js",
+    "!**/.githu/**",
+    "!**/coverage/**",
+    "!**/docs/**",
+    "!**/key/**",
+    "!**/node_modules/**",
+    "!**/_.lodaer.js",
+    "!**_.lodaer.js"
+  ]
+}

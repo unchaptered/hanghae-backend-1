@@ -48,3 +48,16 @@ export class NotFoundException extends CustomException {
     }
 
 }
+
+export class UnkownServerError extends CustomException {
+
+    constructor(message) {
+
+        super(message);
+
+        this.name = 'UnkownServerError';
+        this.statusCode = 500;
+
+    }
+
+} 
