@@ -1,4 +1,6 @@
-import { SuccessForm, FailureForm } from '../../models/_.loader';
+import { SuccessForm, FailureForm } from '../../models/_.loader.js';
+
+
 export class FormFactory {
 
     /**
