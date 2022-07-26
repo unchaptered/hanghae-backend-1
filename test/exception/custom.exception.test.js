@@ -1,4 +1,4 @@
-import { BadRequestException, CustomException } from '../../src/exception/custom.exception';
+import { BadRequestException, CustomException } from '../../src/models/_.loader';
 
 
 describe('Custom Exception List', () => {
