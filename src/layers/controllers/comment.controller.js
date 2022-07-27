@@ -1,8 +1,7 @@
 import * as commentService from '../services/comment.service.js';
 
-import { errorHandler, FormFactory } from '../../modules/_.lodaer.js';
-import { exceptionHandler } from '../../modules/handler/exception.handler.js';
-import { CustomException, BadRequestException, UnkownServerError } from '../../models/_.loader.js';
+import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
+
 
 export async function getComment(req, res) {
 

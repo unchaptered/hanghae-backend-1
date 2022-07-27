@@ -1,7 +1,8 @@
 import * as postService from '../services/post.service.js';
 
-import { FormFactory } from '../../modules/_.lodaer.js';
+import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
 import { BadRequestException } from '../../models/_.loader.js';
+
 
 export async function getPostsByQuery(req, res) {
 
@@ -94,7 +95,7 @@ export async function putPostById(req, res) {
         if (title?.length >=3 && title?.length <= 30
             && context?.length >= 3 && context?.length <= 300) {
     
-            const result = await postService.putPostById(id, title, context, owner, passowrd);
+            const result = await postService.putPostById(id, title, context, owner, password);
 
             return res.status(201).json(
                 formFactory.getSuccessForm('게시글 수정에 성공하셨습니다.', result));
@@ -109,7 +110,6 @@ export async function putPostById(req, res) {
 
 
     }
-    
     
 }
 

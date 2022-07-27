@@ -1,4 +1,4 @@
-import { NotFoundException, UnauthorizedException } from '../../models/_.loader.js';
+import { postModel, NotFoundException, UnauthorizedException } from '../../models/_.loader.js';
 
 /**
  * 
