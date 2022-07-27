@@ -4,12 +4,12 @@ import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
 import { BadRequestException } from '../../models/_.loader.js';
 
 
-export async function getPostsByQuery(req, res) {
+export async function getPostsByQuery(req, res, next) {
 
     const formFactory = new FormFactory();
 
     try {
-
+        
         const { sort } = req.query;
 
         const result = await postService.getPostsByQuery(sort);
@@ -19,9 +19,10 @@ export async function getPostsByQuery(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
     
@@ -48,9 +49,10 @@ export async function createPost(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
     
@@ -72,10 +74,10 @@ export async function getPostById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
 
+        return next();
 
     }
 
@@ -104,10 +106,10 @@ export async function putPostById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
 
+        return next();
 
     }
     
@@ -135,9 +137,10 @@ export async function deletePostById(req, res) {
         
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 

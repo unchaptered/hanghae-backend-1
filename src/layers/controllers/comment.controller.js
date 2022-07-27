@@ -27,9 +27,10 @@ export async function getComment(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -62,9 +63,10 @@ export async function createComment(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -100,9 +102,10 @@ export async function putCommentById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -128,9 +131,10 @@ export async function deleteCommentById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
