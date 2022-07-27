@@ -29,9 +29,13 @@
     "mongoose": "^6.4.6"
   },
   "devDependencies": {
-    "@bab nv": "^7.0.3",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@types/jest": "^28.1.6",
+    "cross-env": "^7.0.3",
     "jest": "^28.1.3",
     "node-mocks-http": "^1.11.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.4"
   }
 }
