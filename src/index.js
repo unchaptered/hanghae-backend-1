@@ -2,8 +2,7 @@ import Env from './env.js';
 import App from './server.js';
 import Db from './db.js';
 
-
-(
+export default (
     /**
      * I want to hide Logic of `index.js`.
      * 
@@ -16,6 +15,8 @@ import Db from './db.js';
         const { MODE, PORT, DB_ADDRESS } = Env.getEnvInstance();
         const result = await Db.setConnection(MODE, DB_ADDRESS);
         const app = await App.getAppInstance(MODE, PORT);
+
+        return app;
     
     }
 )()
