@@ -1,5 +1,6 @@
 import Express from 'express';
 
+import { exceptionMiddleware } from './modules/_.lodaer';
 import { indexRouter, postRouter, commentRouter } from './routes/_.loader.js';
 
 /**
@@ -35,9 +36,12 @@ export default class App {
         this.app.use('/post', postRouter);
         this.app.use('/comment', commentRouter);
 
+        this.app.use(exceptionMiddleware);
+
         this.app.route('*').get((req, res ) => {
             return res.json('Hello, worlds');
         });
+
 
         this.app.listen(PORT, () => {
             if (MODE !== 'test') console.log(`Server is running on ${PORT}, in ${MODE}`);

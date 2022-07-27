@@ -1,8 +1,7 @@
 import * as commentService from '../services/comment.service.js';
 
-import { errorHandler, FormFactory } from '../../modules/_.lodaer.js';
-import { exceptionHandler } from '../../modules/handler/exception.handler.js';
-import { CustomException, BadRequestException, UnkownServerError } from '../../models/_.loader.js';
+import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
+
 
 export async function getComment(req, res) {
 
@@ -28,9 +27,10 @@ export async function getComment(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -63,9 +63,10 @@ export async function createComment(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -101,9 +102,10 @@ export async function putCommentById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
@@ -129,9 +131,10 @@ export async function deleteCommentById(req, res) {
 
     } catch(err) {
 
-        const e = exceptionHandler(err);
-        return res.status(e.statusCode).json(
-            formFactory.getFailureForm(e.message, {}));
+        res.locals.error = err;
+        res.locals.formFactory = formFactory;
+
+        return next();
 
     }
 
