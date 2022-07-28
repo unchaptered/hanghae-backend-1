@@ -13,7 +13,7 @@
 
 ## 파트별 설명
 
-<img src="./ARCHITECTURE.png" style="width: 700px;">
+![](./ARCHITECTURE.png)
 
 ### A 파트 - 어플리케이션
 
