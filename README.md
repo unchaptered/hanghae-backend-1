@@ -1,8 +1,18 @@
 # 주특기 기본 주차 🎉 RESTful API 서버
 
-해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
+- 서버 IPv4 : 52.78.9.253
+- 해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
 
-서버 IPv4 : 52.78.9.253
+<hr>
+
+## 문서
+
+- [문서 리스트](https://github.com/unchaptered/hanghae-backend-1/tree/main/docs)
+  - [API 요구사항](https://github.com/unchaptered/hanghae-backend-1/blob/main/docs/api/API-REQUIREMENTS.md)
+  - [API 명세서](https://github.com/unchaptered/hanghae-backend-1/blob/main/docs/api/API-STATEMENTS.md)
+  - [아키텍쳐 설명](https://github.com/unchaptered/hanghae-backend-1/blob/main/docs/architecture/ARCHITECTURE.md)
+
+<hr>
 
 ## 작업 현황
 
@@ -13,6 +23,8 @@
 | [Rafactor : 계층화되고 유지보수가 쉬운 서버로 개선](https://github.com/unchaptered/hanghae-backend-1/milestone/2)  | @1.2.1 | [Double Layer.](https://github.com/unchaptered/hanghae-backend-1/releases/tag/%401.2.1) |
 | [Refactor : 모듈화를 통한 비즈니스 로직 간결화 + Unit Test(models, modules)](https://github.com/unchaptered/hanghae-backend-1/milestone/5) | @1.3.2 | [Double Layer, with Modules.](https://github.com/unchaptered/hanghae-backend-1/releases/tag/%401.3.2) |
 | [CI/CD : EC2 배포 자동화 파이프 라인 구축](https://github.com/unchaptered/hanghae-backend-1/milestone/3)          | - | - |
+
+<hr>
 
 ## 모듈 리스트
 
