@@ -2,7 +2,7 @@ import { Router } from 'express';
 import {
     getComment, createComment,
     putCommentById, deleteCommentById
-} from '../layers/controllers/comment.controller.js';
+} from '../layers/comment/comment.controller.js';
 
 const commentRouter = Router();
 

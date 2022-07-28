@@ -1,4 +1,4 @@
-import { postModel, commentModel, NotFoundException } from '../models/_.loader.js';
+import { postModel, commentModel, NotFoundException } from '../../models/_.loader.js';
 
 /**
  * 
@@ -49,7 +49,7 @@ export async function createComment(postId, context) {
  */
 export async function putCommentById(commentId, context) {
 
-    const result = await commentModel.findByIdAndUpdate(id, { context }, { new: true });
+    const result = await commentModel.findByIdAndUpdate(commentId, { context }, { new: true });
     if (result === null)
         throw new NotFoundException('존재하지 않는 댓글입니다.');
 

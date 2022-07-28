@@ -1,9 +1,9 @@
-import * as commentService from './controllers/comment.service.js';
+import * as commentService from './comment.service.js';
 
 import { FormFactory } from '../../modules/_.lodaer.js';
 
 
-export async function getComment(req, res) {
+export async function getComment(req, res, next) {
 
     const formFactory = new FormFactory();
 
@@ -35,7 +35,7 @@ export async function getComment(req, res) {
     }
 
 }
-export async function createComment(req, res) {
+export async function createComment(req, res, next) {
 
     const formFactory = new FormFactory();
     
@@ -71,7 +71,7 @@ export async function createComment(req, res) {
 
 }
 
-export async function putCommentById(req, res) {
+export async function putCommentById(req, res, next) {
 
     const formFactory = new FormFactory();
     
@@ -109,7 +109,7 @@ export async function putCommentById(req, res) {
     }
 
 }
-export async function deleteCommentById(req, res) {
+export async function deleteCommentById(req, res, next) {
 
     const formFactory = new FormFactory();
     

@@ -1,4 +1,4 @@
-import * as postService from '../services/post.service.js';
+import * as postService from './post.service.js';
 
 import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
 import { BadRequestException } from '../../models/_.loader.js';

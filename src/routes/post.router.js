@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { 
     getPostsByQuery, createPost,
     getPostById, putPostById, deletePostById
-} from '../layers/controllers/post.controller.js';
+} from '../layers/post/post.controller.js';
 
 const postRouter = Router();
 
