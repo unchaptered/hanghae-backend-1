@@ -28,7 +28,7 @@ export async function getPostsByQuery(req, res, next) {
     
 }
 
-export async function createPost(req, res) {
+export async function createPost(req, res, next) {
 
     const formFactory = new FormFactory();
 
@@ -59,7 +59,7 @@ export async function createPost(req, res) {
 
 }
 
-export async function getPostById(req, res) {
+export async function getPostById(req, res, next) {
 
     const formFactory = new FormFactory();
 
@@ -70,7 +70,7 @@ export async function getPostById(req, res) {
         const result = await postService.getPostById(id);
 
         return res.status(201).json(
-            formFactory.getSuccessForm('게시글 수정이 완료되었습니다.', result));
+            formFactory.getSuccessForm('게시글 로딩이 완료되었습니다.', result));
 
     } catch(err) {
 
@@ -83,7 +83,7 @@ export async function getPostById(req, res) {
 
 }
 
-export async function putPostById(req, res) {
+export async function putPostById(req, res, next) {
 
     const formFactory = new FormFactory();
 
@@ -115,7 +115,7 @@ export async function putPostById(req, res) {
     
 }
 
-export async function deletePostById(req, res) {
+export async function deletePostById(req, res, next) {
 
     const formFactory = new FormFactory();
 
@@ -128,7 +128,7 @@ export async function deletePostById(req, res) {
         
         if (owner.length >= 1 && password.length >= 1) {
     
-            const result = await postService.deletePostById(id, owner, passowrd);
+            const result = await postService.deletePostById(id, owner, password);
 
             return res.status(201).json(
                 formFactory.getSuccessForm('게시글이 삭제되었습니다.', result));

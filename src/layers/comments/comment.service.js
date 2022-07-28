@@ -1,4 +1,4 @@
-import { postModel, commentModel, NotFoundException } from '../../models/_.loader.js';
+import { postModel, commentModel, NotFoundException } from '../models/_.loader.js';
 
 /**
  * 

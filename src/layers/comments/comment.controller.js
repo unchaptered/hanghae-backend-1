@@ -1,6 +1,6 @@
-import * as commentService from '../services/comment.service.js';
+import * as commentService from './controllers/comment.service.js';
 
-import { FormFactory, exceptionHandler } from '../../modules/_.lodaer.js';
+import { FormFactory } from '../../modules/_.lodaer.js';
 
 
 export async function getComment(req, res) {
@@ -35,7 +35,6 @@ export async function getComment(req, res) {
     }
 
 }
-
 export async function createComment(req, res) {
 
     const formFactory = new FormFactory();

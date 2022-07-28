@@ -1,6 +1,6 @@
 import Express from 'express';
 
-import { exceptionMiddleware } from './modules/_.lodaer';
+import { exceptionMiddleware } from './modules/_.lodaer.js';
 import { indexRouter, postRouter, commentRouter } from './routes/_.loader.js';
 
 /**
