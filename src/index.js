@@ -15,7 +15,17 @@ import Db from './db.js';
 
         const { MODE, PORT, DB_ADDRESS } = Env.getEnvInstance();
         const result = await Db.setConnection(MODE, DB_ADDRESS);
-        const app = await App.getAppInstance(MODE, PORT);
+        if (result.isSuccess) {
+
+            console.log('데이터 베이스 연결에 성공했습니다.');
+            const app = await App.getAppInstance(MODE, PORT);
+
+        } else {
+
+            console.log('데이터 베이스 연결에 실패했습니다.');
+            console.log(result.message);
+
+        }
     
     }
 )()
