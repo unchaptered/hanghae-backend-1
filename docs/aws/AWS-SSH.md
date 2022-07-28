@@ -1,0 +1,1 @@
+ssh -i pem-키 ubuntu@Public-IPv4
