@@ -3,6 +3,8 @@
 - 서버 IPv4 : 52.78.9.253
 - 해당 프로젝트는 [Boiler-Express/Base-Express](https://github.com/Boiler-Express/.github/blob/main/profile/BASIC-COURSE.md) 로 생성하였습니다.
 
+![](./docs/architecture/ARCHITECTURE.png)
+
 <hr>
 
 ## 문서
